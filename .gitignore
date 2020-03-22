@@ -1,0 +1,5 @@
+#ignore all files and folders from node_modules
+node_modules/
+
+#ignore all files and folder inside migrations directory
+src/database/migrations/
