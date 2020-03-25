@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import UserController from "./app/controllers/UserController";
+import SessionController from "./app/controllers/SessionController";
 
 import {
   nameExists,
@@ -9,14 +10,20 @@ import {
   passwordExists
 } from "./app/middlewares/userMiddleware";
 
+import authToken from "./app/middlewares/sessionMiddleware";
+
 const routes = new Router();
 
-routes.get("/user", (req, res) => {
+routes.get("/user", authToken, (req, res) => {
   UserController.list(req, res);
 });
 
 routes.post("/user", nameExists, emailExists, passwordExists, (req, res) => {
   UserController.store(req, res);
+});
+
+routes.post("/session", (req, res) => {
+  SessionController.store(req, res);
 });
 
 routes.put(
