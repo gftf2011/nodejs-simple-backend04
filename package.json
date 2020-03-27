@@ -8,9 +8,11 @@
   "scripts": {
     "dev": "nodemon ./src/server.js",
     "debug": "nodemon --inspect ./src/server",
+    "lint": "eslint --fix src --ext .js",
     "create-migration": "sequelize migration:generate --name=create-user",
     "create-table": "sequelize db:migrate",
-    "create-seed": "sequelize seed:generate --name=create-user"
+    "create-seed": "sequelize seed:generate --name=create-user",
+    "create-users": "sequelize db:seed:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -22,7 +24,7 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",

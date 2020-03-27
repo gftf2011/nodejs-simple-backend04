@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from '../models/User';
 
 class UserController {
   constructor() {}
@@ -11,7 +11,7 @@ class UserController {
 
   async store(req, res) {
     const emailExists = await User.findOne({
-      where: { email: req.body.email }
+      where: { email: req.body.email },
     });
 
     if (emailExists) {
