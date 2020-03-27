@@ -9,7 +9,8 @@
     "dev": "nodemon ./src/server.js",
     "debug": "nodemon --inspect ./src/server",
     "create-migration": "sequelize migration:generate --name=create-user",
-    "create-table": "sequelize db:migrate"
+    "create-table": "sequelize db:migrate",
+    "create-seed": "sequelize seed:generate --name=create-user"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

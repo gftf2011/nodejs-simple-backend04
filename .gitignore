@@ -3,3 +3,6 @@ node_modules/
 
 #ignore all files and folder inside migrations directory
 src/database/migrations/
+
+#ignore all files and folder inside seeds directory
+src/database/seeds/

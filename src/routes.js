@@ -31,12 +31,13 @@ routes.put(
   emailExists,
   passwordExists,
   oldPasswordExists,
+  authToken,
   (req, res) => {
     UserController.update(req, res);
   }
 );
 
-routes.delete("/user", emailExists, (req, res) => {
+routes.delete("/user", emailExists, authToken, (req, res) => {
   UserController.remove(req, res);
 });
 
