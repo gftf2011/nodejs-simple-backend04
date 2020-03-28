@@ -164,8 +164,16 @@ yarn dev
 >  ```
 
 ### :airplane: Rotas da aplicação
-
-- `GET /user`: Rota que lista todos os usuários;
+- `POST /session`: Rota cria uma sessão por *7 dias* para um usuário existente na base de dados. No corpo da requisição é passado um JSON no seguinte formato:
+```javascript
+{
+  email: "johndoe@gmail.com",
+  password: "123456"
+}
+```
+----
+- `GET /user`: Rota que lista todos os usuários. 
+>  OBS.: *Esta rota para ser acessada necessita de um session token válido*;
 - `POST /user`: Rota cadastra um novo usuário no banco de dados. No corpo da requisição deve ser informado um JSON no seguint formato:
 ```javascript
 {
@@ -174,6 +182,7 @@ yarn dev
   password: "123456"
 }
 ```
+>  OBS.: *Esta rota NÃO precisa ser acessada com um session token válido*;
 - `PUT /user`: Rota altera a senha do usuário no banco de dados. No corpo da requisição de ser informado um JSON no seguinte formato:
 ```javascript
 {
@@ -182,9 +191,11 @@ yarn dev
   password: "1234567"
 }
 ```
+>  OBS.: *Esta rota para ser acessada necessita de um session token válido*;
 - `DELETE /user`: A rota deleta o usuário com o email específico. No corpo da requisição de ser informado um JSON no seguinte formato:
 ```javascript
 {
   email: "example@gmail.com",
 }
 ```
+>  OBS.: *Esta rota para ser acessada necessita de um session token válido*;
