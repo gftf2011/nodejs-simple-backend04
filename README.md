@@ -7,7 +7,7 @@
 </h1>
 <h2 align="center">Node.JS simple backend project | version: 4</h2>
 
-<h3 align="center">Este é um projeto para testar rotas de Back-end e persistência de dados em um banco de dados relacional!</h3>
+<h3 align="center">Este é um projeto para testar rotas de Back-end e persistência de dados em um banco de dados relacional! O projeto tambêm usa para acesso de certas rotas a validação de session token.</h3>
 
 ### :ferris_wheel: Para rodar a Aplicação
   
@@ -101,7 +101,56 @@ module.exports = {
 ```bash
 yarn create-table
 ```
-9.  Rode por último o comando para subir :rocket: sua aplicação:
+9.  Rode em seguida o comando abaixo para criar seu arquivo de seeds:
+```bash
+yarn create-seed
+```
+10.  Após rodar o comando da linha acima altere o conteudo dentro de *src/database/seeds/'timestamp'-create-user.js* para:
+```javascript
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert(
+      'users',
+      [
+        {
+          name: 'John Doe',
+          email: 'johndoe@gmail.com',
+          password_hash:
+            '$2y$08$ZBWJLu3D6jqLeWgQB58Df.X9mXIMDFZ0yuubNNjE8B6x.tMw7xu6a', // password = 123456
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+        {
+          name: 'John Travolta',
+          email: 'johntravolta@gmail.com',
+          password_hash:
+            '$2y$08$dLdy6jNBdGbnDM//Jmavwu2LFgOK9bY.gIhRukAZ8fl0T0ezK6Ko6', // password = 1234567
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+        {
+          name: 'Jane Doe',
+          email: 'janedoe@gmail.com',
+          password_hash:
+            '$2y$08$U4tVEnQnT4qTfAMuD3F57OXGzsd.RdkBrU5ZJhzlm7gRFRuqrbYRC', // password = 12345678
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+      ],
+      {}
+    );
+  },
+
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('users', null, {});
+  },
+};
+```
+11.  Em seguida rode o comando abaixo para popular sua base de dados:
+```bash
+yarn create-users
+```
+12.  Rode por último o comando para subir :rocket: sua aplicação:
 ```bash
 yarn dev
 ```
